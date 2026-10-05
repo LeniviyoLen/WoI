@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web of Illusions</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg"></div>
+
+<!-- ЭКРАН ПРИВЕТСТВИЯ -->
+<section id="welcome" class="screen hidden">
+  <h1 class="welcome-title">Welcome to <span>WoI</span></h1>
+  <p class="welcome-sub">Web of Illusions</p>
+  <button id="enter-btn" class="btn primary">Войти / Зарегистрироваться</button>
+</section>
+
+<!-- РЕГИСТРАЦИЯ -->
+<section id="register" class="screen hidden">
+  <form id="reg-form" class="card">
+    <h2>Создание персонажа</h2>
+    <label>Ник персонажа
+      <input name="nick" required maxlength="32" placeholder="Например: Alfer">
+      <small class="warn">⚠ Это ник В ИГРЕ, а НЕ твой ник в Telegram!</small>
+    </label>
+    <label>Ссылка на анкету
+      <input name="profile" type="url" required placeholder="https://...">
+    </label>
+    <label>Когда ты зарегистрировался на сервере
+      <input name="regDate" type="datetime-local" required>
+      <small>От этой даты считается опыт и уровень. Указывай честно.</small>
+    </label>
+    <div class="label">Класс <small>(влияет на характеристики, сменить нельзя)</small></div>
+    <div class="classes" id="class-pick"></div>
+    <button type="submit" class="btn primary">Начать путь</button>
+  </form>
+</section>
+
+<!-- ГЛАВНЫЙ ЭКРАН -->
+<section id="main" class="screen hidden">
+  <header class="topbar">
+    <div class="logo">WEB <i>of</i> ILLUSIONS</div>
+    <nav class="top-icons">
+      <button class="ico" title="Почта">✉</button>
+      <button class="ico" title="Уведомления">🔔</button>
+      <button class="ico" title="Друзья">👥</button>
+      <button class="ico" title="Настройки">⚙</button>
+      <button class="ico" id="logout" title="Выйти">⏻</button>
+    </nav>
+  </header>
+
+  <aside class="sidebar">
+    <a id="lnk-life" target="_blank" rel="noopener" class="side-link"><span>✦</span>Лайф</a>
+    <a id="lnk-tiktok" target="_blank" rel="noopener" class="side-link"><span>♪</span>TikTok</a>
+    <a id="lnk-donate" target="_blank" rel="noopener" class="side-link"><span>♥</span>Донат</a>
+  </aside>
+
+  <div class="panel" id="stat-panel">
+    <div class="panel-head">
+      <div>
+        <div class="nick" id="p-nick"></div>
+        <div class="cls">Класс: <b id="p-class"></b> · <a id="p-profile" target="_blank" rel="noopener">анкета</a></div>
+      </div>
+      <div class="lvl-badge" id="p-lvl"></div>
+    </div>
+
+    <div class="stats" id="p-stats"></div>
+
+    <div class="lvl-row">
+      <span id="lv-cur"></span>
+      <div class="bar"><div id="lv-fill"></div></div>
+      <span id="lv-next"></span>
+    </div>
+    <div class="muted" id="p-days"></div>
+
+    <div class="block">
+      <div class="block-title">Доступная опасность монстров</div>
+      <div id="p-monsters"></div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Выбранные навыки</div>
+      <div id="p-pick-btns"></div>
+      <ul id="p-skills" class="skills"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- МОДАЛКА ВЫБОРА НАВЫКА -->
+<div id="modal" class="modal hidden">
+  <div class="card modal-card">
+    <h3 id="m-title">Выбери новый навык</h3>
+    <p class="muted" id="m-note"></p>
+    <div id="m-options" class="options"></div>
+    <button class="btn ghost" id="m-close">Позже</button>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
